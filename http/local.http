@@ -1,0 +1,4 @@
+POST http://localhost:7071/api/HttpTrigger-Java
+Content-Type: application/json
+
+"Marc"

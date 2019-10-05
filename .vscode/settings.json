@@ -1,0 +1,13 @@
+{
+  "azureFunctions.deploySubpath": "target/azure-functions/azure-functions-java-workshop-1570285245364/",
+  "azureFunctions.projectLanguage": "Java",
+  "azureFunctions.projectRuntime": "~2",
+  "debug.internalConsoleOptions": "neverOpen",
+"azureFunctions.preDeployTask": "package",
+"files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+}
+}

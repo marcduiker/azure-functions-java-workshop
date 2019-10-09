@@ -1,4 +1,8 @@
-POST http://localhost:7071/api/HttpTrigger-Java
+POST http://localhost:7071/api/HttpTriggerFunction
 Content-Type: application/json
 
-"Marc"
+{
+  "attendeeName": "Marc Duiker",
+  "sessionName": "Azure Functions Workshop",
+  "score": 5
+}

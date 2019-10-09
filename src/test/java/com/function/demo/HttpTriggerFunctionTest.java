@@ -1,5 +1,6 @@
 package com.function.demo;
 
+import com.google.gson.*;
 import com.microsoft.azure.functions.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -14,9 +15,9 @@ import static org.mockito.Mockito.*;
 
 
 /**
- * Unit test for Function class.
+ * Unit test for HttpTriggerFunction class.
  */
-public class FunctionTest {
+public class HttpTriggerFunctionTest {
     /**
      * Unit test for HttpTriggerJava method.
      */
@@ -25,12 +26,11 @@ public class FunctionTest {
         // Setup
         @SuppressWarnings("unchecked")
         final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
-
-        final Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("name", "Azure");
-        doReturn(queryParams).when(req).getQueryParameters();
-
-        final Optional<String> queryBody = Optional.empty();
+        Gson gson = new Gson();
+        AttendeeFeedback feedback = new AttendeeFeedback();
+        feedback.attendeeName = "Test Name";
+        String feedbackString = gson.toJson(feedback);
+        final Optional<String> queryBody = Optional.of(feedbackString);
         doReturn(queryBody).when(req).getBody();
 
         doAnswer(new Answer<HttpResponseMessage.Builder>() {
@@ -44,8 +44,10 @@ public class FunctionTest {
         final ExecutionContext context = mock(ExecutionContext.class);
         doReturn(Logger.getGlobal()).when(context).getLogger();
 
+        OutputBinding<AttendeeFeedback> feedbackItem = mock(OutputBinding.class);
+
         // Invoke
-        final HttpResponseMessage ret = new Function().run(req, context);
+        final HttpResponseMessage ret = new HttpTriggerFunction().run(req, feedbackItem, context);
 
         // Verify
         assertEquals(ret.getStatus(), HttpStatus.OK);

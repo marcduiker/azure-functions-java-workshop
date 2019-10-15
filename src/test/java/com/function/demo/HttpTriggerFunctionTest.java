@@ -27,8 +27,7 @@ public class HttpTriggerFunctionTest {
         @SuppressWarnings("unchecked")
         final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
         Gson gson = new Gson();
-        AttendeeFeedback feedback = new AttendeeFeedback();
-        feedback.attendeeName = "Test Name";
+        AttendeeFeedback feedback = new AttendeeFeedback("Marc Duiker", "Me", "Azure Functions", 5);
         String feedbackString = gson.toJson(feedback);
         final Optional<String> queryBody = Optional.of(feedbackString);
         doReturn(queryBody).when(req).getBody();

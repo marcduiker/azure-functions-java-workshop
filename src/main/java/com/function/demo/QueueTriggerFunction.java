@@ -4,7 +4,7 @@ import java.util.*;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.QueueTrigger;
 import com.microsoft.azure.functions.annotation.StorageAccount;
-import com.microsoft.azure.functions.annotation.BlobOutput;
+import com.microsoft.azure.functions.annotation.TableOutput;
 import com.microsoft.azure.functions.*;
 
 public class QueueTriggerFunction {
@@ -13,13 +13,12 @@ public class QueueTriggerFunction {
      */
     @FunctionName("QueueTriggerFunction")
     @StorageAccount("AzureWebJobsStorage")
-    public AttendeeFeedback run(
-           @QueueTrigger(name = "feedback", queueName = "feedback-queue") AttendeeFeedback message,
-           @BlobOutput(name = "bloboutput", path = "feedback-output/{rand-guid}.json") OutputBinding<AttendeeFeedback> blob,
+    public void run(
+           @QueueTrigger(name = "feedback", queueName = "feedback-queue") AttendeeFeedback feedback,
+           @TableOutput(name = "bloboutput", tableName = "feedback") OutputBinding<AttendeeFeedback> table,
             final ExecutionContext context) {
         context.getLogger().info("Queue trigger started.");
-        blob.setValue(message);
-
-        return message;
+        feedback.SetKeys();
+        table.setValue(feedback);
     }
 }

@@ -14,7 +14,7 @@ public class HttpTriggerFunction {
     
     @FunctionName("HttpTriggerFunction")
     public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
             @QueueOutput(name = "feedback", queueName = "feedback-queue", connection = "AzureWebJobsStorage") OutputBinding<AttendeeFeedback> queue,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -23,7 +23,7 @@ public class HttpTriggerFunction {
         if (body.isPresent()) {
             Gson gson = new Gson();
             AttendeeFeedback feedback = gson.fromJson(body.get(), AttendeeFeedback.class);
-            String thankYouMessage = "Thank you, " + feedback.attendeeName + " for submitting your feedback!";
+            String thankYouMessage = "Thank you for submitting your feedback for session '" + feedback.sessionName + "' by " + feedback.presenterName + ".";
             queue.setValue(feedback);
             return request.createResponseBuilder(HttpStatus.OK).body(thankYouMessage).build();
         } else {

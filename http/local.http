@@ -2,7 +2,8 @@ POST http://localhost:7071/api/HttpTriggerFunction
 Content-Type: application/json
 
 {
-  "attendeeName": "Marc Duiker",
+  "presenterName": "Marc Duiker",
   "sessionName": "Azure Functions Workshop",
-  "score": 5
+  "attendeeName": "Someone else",
+  "sessionScore": 4
 }

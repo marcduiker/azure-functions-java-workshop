@@ -46,7 +46,7 @@ Navigate to the `Function.java` file and inspect content of the Function class.
 
 > How can the function be triggered?
 
-## Run the Function App locally
+## Run the Function App Locally
 
 Start to run & debug the Function App (`F5`).
 

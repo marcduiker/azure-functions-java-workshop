@@ -23,21 +23,6 @@ Now the function project will be scaffolded and you should see the following:
 
 ![Java Overview](java-overview-vscode.png)
 
-## Local Emulated Storage
-
-The `local.settings.json` file contains settings for the Function App which are only used on your local machine (this should not be checked into source control).
-
-Make sure your `local.settings.json` contains the `AzureWebJobsStorage` value as shown below:
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "java"
-  }
-}
-```
 ## Inspect the Function class
 
 Navigate to the `Function.java` file and inspect content of the Function class.

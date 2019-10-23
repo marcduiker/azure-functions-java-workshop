@@ -39,7 +39,7 @@ public class AttendeeFeedback {
 }
 ```
 
-> Note that this class has partitionKey and rowKey properties. These are required for saving this object in Table Storage in the next lab.
+> Note that this class has partitionKey and rowKey properties. These are required for saving this object in Azure Table Storage in the next lab.
 
 ## Add a QueueOutput Binding
 
@@ -48,6 +48,28 @@ Now add the following output binding to the function (right below the @HttpTrigg
 ```java
 @QueueOutput(name = "feedback", queueName = "feedback-queue", connection = "AzureWebJobsStorage") OutputBinding<AttendeeFeedback> queue,
 ```
+
+## Local Emulated Storage
+
+You just specified a connection name in the `QueueOupu`t attribute but this connection setting is not defined yet.
+
+The `local.settings.json` file contains settings for the Function App which are only used on your local machine (this file should not be checked into source control).
+
+Make sure your `local.settings.json` contains the `AzureWebJobsStorage` value as shown below:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "java"
+  }
+}
+```
+
+By using the `UseDevelopmentStorage=true` value the Azure Functions runtime knows it should use local emulated storage. Once the Function App is deployed to the cloud the `AzureWebJobsStorage` setting should point to an Azure Storage Account.
+
+If you can't get the storage emulator to work you can also create an [Azure Storage Account](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) (or ask the proctor for help).
 
 ## Update the Method Body
 

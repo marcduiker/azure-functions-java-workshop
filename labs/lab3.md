@@ -113,4 +113,5 @@ You've reached the end of the labs, well done!
 
 Here are some additional resources you might want to look into:
 - [Azure Functions Java developer guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-java)
+- [Azure Functions Java Worker on GitHub](https://github.com/Azure/azure-functions-java-worker)
 - [Spring On Azure](https://docs.microsoft.com/en-us/azure/java/spring-framework/?view=azure-java-stable)

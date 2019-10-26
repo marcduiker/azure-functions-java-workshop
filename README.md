@@ -2,13 +2,13 @@
 
 ## Goal
 
-The goals is to get a feel what the development experience is when writing Java based Azure Functions using VS Code.
+The goal is to get a feel what the development experience is when writing Java based Azure Functions using VS Code.
 
 ## Prerequisites
 
 Please download and install [VS Code](https://code.visualstudio.com/Download) and follow [these instructions](https://code.visualstudio.com/docs/java/java-azurefunctions) to install the required tooling.
 
-In order to develop completely locally and not rely on the cloud you can install one these storage emulators:
+In order to develop completely locally and not rely on the cloud you can install one of these storage emulators:
 - [Azure Storage Emulator](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (For Windows)
 - [Azurite extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) (Cross platform)
 

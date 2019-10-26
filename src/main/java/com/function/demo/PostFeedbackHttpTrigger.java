@@ -10,9 +10,9 @@ import com.microsoft.azure.functions.*;
 /**
  * Azure Functions with HTTP Trigger.
  */
-public class HttpTriggerFunction {
+public class PostFeedbackHttpTrigger {
     
-    @FunctionName("HttpTriggerFunction")
+    @FunctionName("PostFeedbackHttpTrigger")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
             @QueueOutput(name = "feedback", queueName = "feedback-queue", connection = "AzureWebJobsStorage") OutputBinding<AttendeeFeedback> queue,
@@ -23,7 +23,7 @@ public class HttpTriggerFunction {
         if (body.isPresent()) {
             Gson gson = new Gson();
             AttendeeFeedback feedback = gson.fromJson(body.get(), AttendeeFeedback.class);
-            String thankYouMessage = "Thank you for submitting your feedback for session '" + feedback.sessionName + "' by " + feedback.presenterName + ".";
+            String thankYouMessage = "Thank you for submitting your feedback for session '" + feedback.sessionName + ".";
             queue.setValue(feedback);
             return request.createResponseBuilder(HttpStatus.OK).body(thankYouMessage).build();
         } else {

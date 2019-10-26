@@ -2,9 +2,11 @@
 
 ## Goal
 
-The goal of this lab is to create a Function App in VS Code, run the application and trigger the function.
+The goal of this lab is to create a Function App in VS Code, run the application and trigger the default HTTP function.
 
-## Creating a new Function Project
+## Steps
+
+### 1. Creating a new Function Project
 
 In VS Code, use the Command Palette (CTRL+Shift+P) and type/select
 
@@ -23,7 +25,7 @@ Now the function project will be scaffolded and you should see the following:
 
 ![Java Overview](java-overview-vscode.png)
 
-## Inspect the Function class
+### 2. Inspect the Function class
 
 Navigate to the `Function.java` file and inspect content of the Function class.
 
@@ -31,7 +33,7 @@ Navigate to the `Function.java` file and inspect content of the Function class.
 
 > How can the function be triggered?
 
-## Run the Function App Locally
+### 3. Run the Function App Locally
 
 Start to run & debug the Function App (`F5`).
 
@@ -41,7 +43,7 @@ Eventually the following line should appear:
 
 `HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java`
 
-## Trigger the function
+### 4. Trigger the function
 
 Use curl, Postman or the VS Code REST client to trigger the function by calling the local endpoint with either a GET or a POST:
 

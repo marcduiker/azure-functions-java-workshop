@@ -15,9 +15,9 @@ import static org.mockito.Mockito.*;
 
 
 /**
- * Unit test for HttpTriggerFunction class.
+ * Unit test for PostFeedbackHttpTrigger class.
  */
-public class HttpTriggerFunctionTest {
+public class PostFeedbackHttpTriggerTest {
     /**
      * Unit test for HttpTriggerJava method.
      */
@@ -27,7 +27,7 @@ public class HttpTriggerFunctionTest {
         @SuppressWarnings("unchecked")
         final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
         Gson gson = new Gson();
-        AttendeeFeedback feedback = new AttendeeFeedback("Marc Duiker", "Me", "Azure Functions", 5);
+        AttendeeFeedback feedback = new AttendeeFeedback("Me", "Azure Functions", 5);
         String feedbackString = gson.toJson(feedback);
         final Optional<String> queryBody = Optional.of(feedbackString);
         doReturn(queryBody).when(req).getBody();
@@ -46,7 +46,7 @@ public class HttpTriggerFunctionTest {
         OutputBinding<AttendeeFeedback> feedbackItem = mock(OutputBinding.class);
 
         // Invoke
-        final HttpResponseMessage ret = new HttpTriggerFunction().run(req, feedbackItem, context);
+        final HttpResponseMessage ret = new PostFeedbackHttpTrigger().run(req, feedbackItem, context);
 
         // Verify
         assertEquals(ret.getStatus(), HttpStatus.OK);

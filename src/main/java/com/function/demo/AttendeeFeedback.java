@@ -6,24 +6,22 @@ public class AttendeeFeedback {
         super();
     }
     
-    public AttendeeFeedback(String presenter, String attendee,  String session, Integer score) {
+    public AttendeeFeedback(String attendee,  String session, Integer score) {
         partitionKey = session;
         rowKey = attendee;
 
-        presenterName = presenter;
         attendeeName = attendee;
         sessionName = session;
         sessionScore = score;
     }
 
-    public void SetKeys(){
+    public void setKeys(){
         partitionKey = sessionName;
         rowKey = attendeeName;
     }
 
     public String partitionKey;
     public String rowKey;
-    public String presenterName;
     public String attendeeName;
     public String sessionName;
     public Integer sessionScore;

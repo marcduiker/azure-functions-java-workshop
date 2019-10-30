@@ -1,4 +1,6 @@
-# Workshop: Creating Azure Functions in Java
+# Workshop: Building Azure Functions in Java
+
+In case you did not attend my brief introduction on Building Azure Functions in Java, have a [look at the slides](https://speakerdeck.com/marcduiker/building-azure-functions-in-java).
 
 ## Goal
 
@@ -18,7 +20,15 @@ In order to develop completely locally and not rely on the cloud you can install
 
 ## Use case
 
-Most conferences like to get feedback from the attendees about the sessions they followed. In the following 3 labs you will implement the back-end part of this functionality by writing Java based Azure Functions to capture and store the feedback.
+Most conferences like to get feedback from the attendees about the sessions or workshops they followed. In the next 3 labs you will implement the back-end part of this functionality by writing Azure Functions in Java to capture and store the feedback.
+
+## High level solution
+
+The end situation will be that a POST is done to your HttpTrigger function with the attendee feedback in the request body. A message with the feedback is put on a queue. Then a QueueTriggered function will pick up this message and store this in Table Storage.
+
+```
+HTTP POST  --->  Queue  --->  Table
+```
 
 ## Labs
 

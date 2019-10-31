@@ -35,3 +35,4 @@ HTTP POST  --->  Queue  --->  Table
 - [Lab 1 - Default Function](/labs/lab1.md)
 - [Lab 2 - HttpTrigger with queue output](/labs/lab2.md)
 - [Lab 3 - QueueTrigger with table output](/labs/lab3.md)
+- [Lab 4 - Deploy to Azure](/labs/lab4.md)

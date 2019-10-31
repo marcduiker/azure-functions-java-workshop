@@ -102,7 +102,16 @@ if (body.isPresent()) {
 }
 ```
 
-> Note that the code shown above requires some additional dependencies which need to be added in the POM.xml.
+Note that the code shown above requires some additional dependencies which need to be added in the POM.xml:
+
+```xml
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.6</version>
+    <scope>compile</scope>
+</dependency>
+```
 
 > The unit test are probably failing and need to be refactored due to the changes made.
 
